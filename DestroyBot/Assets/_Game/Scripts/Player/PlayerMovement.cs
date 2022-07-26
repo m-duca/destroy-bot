@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private float velPower;
 
     [SerializeField]
-    private float frictionAmount;
+    [Range(0f, 1f)] private float frictionAmount;
 
     private float moveInput = 0;
 

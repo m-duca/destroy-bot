@@ -2480,78 +2480,34 @@ CompositeCollider2D:
         Y: -100000000
       - X: 180000000
         Y: -100000000
-    - - X: -160000041
-        Y: -80000100
-      - X: -160000100
-        Y: -80000041
-      - X: -160000100
-        Y: -69999959
-      - X: -160000041
-        Y: -69999900
-      - X: -160000000
-        Y: -69999900
-      - X: -160000000
-        Y: -60000100
-      - X: -160000041
-        Y: -60000100
-      - X: -160000100
-        Y: -60000041
-      - X: -160000100
-        Y: -49999959
-      - X: -160000041
-        Y: -49999900
-      - X: -160000000
-        Y: -49999900
+    - - X: -160000000
+        Y: -80000000
       - X: -160000000
         Y: 90000000
       - X: 160000000
         Y: 90000000
       - X: 160000000
-        Y: -69999900
-      - X: 160000041
-        Y: -69999900
-      - X: 160000100
-        Y: -69999959
-      - X: 160000100
-        Y: -80000041
-      - X: 160000041
-        Y: -80000100
-      - X: 59999959
-        Y: -80000100
-      - X: 59999900
-        Y: -80000041
-      - X: 59999900
-        Y: -69999959
-      - X: 59999959
-        Y: -69999900
+        Y: -80000000
       - X: 60000000
-        Y: -69999900
+        Y: -80000000
       - X: 60000000
-        Y: -60000100
+        Y: -60000000
       - X: 30000000
-        Y: -60000100
+        Y: -60000000
       - X: 30000000
-        Y: -69999900
-      - X: 30000041
-        Y: -69999900
-      - X: 30000100
-        Y: -69999959
-      - X: 30000100
-        Y: -80000041
-      - X: 30000041
-        Y: -80000100
+        Y: -80000000
   m_CompositePaths:
     m_Paths:
     - - {x: 17.999971, y: -10}
       - {x: 17.999971, y: 11}
       - {x: -18, y: 10.99997}
       - {x: -17.999971, y: -10}
-    - - {x: 16.000006, y: -7.999981}
-      - {x: 5.99999, y: -7.9999747}
-      - {x: 5.999971, y: -6.00001}
-      - {x: 3, y: -6.000039}
-      - {x: 2.9999807, y: -8.000004}
-      - {x: -16.00001, y: -7.9999747}
+    - - {x: 16, y: -7.9999704}
+      - {x: 6, y: -7.9999704}
+      - {x: 5.999971, y: -6}
+      - {x: 3, y: -6.000029}
+      - {x: 2.9999707, y: -8}
+      - {x: -16, y: -7.9999704}
       - {x: -15.999971, y: 9}
       - {x: 16, y: 8.99997}
   m_VertexDistance: 0.0005
@@ -2848,14 +2804,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1131898545}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 391077249}
   - {fileID: 1395113068}
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 2083910032}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1205884675
 GameObject:
@@ -3648,22 +3604,14 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 1395113071}
     m_ColliderPaths:
-    - - X: 60000100
-        Y: -20000041
-      - X: 60000100
-        Y: -9999959
-      - X: 60000041
-        Y: -9999900
-      - X: -40000041
-        Y: -9999900
-      - X: -40000100
-        Y: -9999959
-      - X: -40000100
-        Y: -20000041
-      - X: -40000041
-        Y: -20000100
-      - X: 60000041
-        Y: -20000100
+    - - X: 60000000
+        Y: -10000000
+      - X: -40000000
+        Y: -10000000
+      - X: -40000000
+        Y: -20000000
+      - X: 60000000
+        Y: -20000000
     - - X: 90000000
         Y: -20000000
       - X: 70000000
@@ -3704,14 +3652,6 @@ CompositeCollider2D:
         Y: -60000000
       - X: 60000000
         Y: -60000000
-    - - X: 30000000
-        Y: -70000000
-      - X: -160000000
-        Y: -70000000
-      - X: -160000000
-        Y: -80000000
-      - X: 30000000
-        Y: -80000000
     - - X: 160000000
         Y: -70000000
       - X: 60000000
@@ -3720,12 +3660,20 @@ CompositeCollider2D:
         Y: -80000000
       - X: 160000000
         Y: -80000000
+    - - X: 30000000
+        Y: -70000000
+      - X: -160000000
+        Y: -70000000
+      - X: -160000000
+        Y: -80000000
+      - X: 30000000
+        Y: -80000000
   m_CompositePaths:
     m_Paths:
-    - - {x: 5.9999747, y: -2.00001}
-      - {x: 5.9999747, y: -0.99999}
-      - {x: -4.00001, y: -1.0000252}
-      - {x: -3.9999747, y: -2.00001}
+    - - {x: 5.999971, y: -2}
+      - {x: 5.999971, y: -1}
+      - {x: -4, y: -1.0000293}
+      - {x: -3.999971, y: -2}
     - - {x: 8.99997, y: -3}
       - {x: 8.99997, y: -2}
       - {x: 7, y: -2.0000293}
@@ -3878,7 +3826,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 6
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 0
@@ -3912,14 +3860,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d42a4529dd6c1428f2c558e6866d66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  acceleration: 7
-  decceleration: 7
-  velPower: 0.9
+  moveSpeed: 8
+  acceleration: 8
+  decceleration: 16
+  velPower: 0.95
   frictionAmount: 0.2
-  jumpForce: 35
+  jumpForce: 25
   coyoteTime: 0.35
-  groundCheckSize: {x: 2, y: 2}
+  groundCheckSize: {x: 0.5, y: 0.5}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -3955,4 +3903,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2083910031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2083910032}
+  m_Layer: 0
+  m_Name: Layout
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2083910032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083910031}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1131898547}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
