@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Transform checkGroundPoint;
 
-    private bool canJump = true;
+    [SerializeField] private bool canJump = false;
     private bool isJumping = false;
     private bool jumpInputPressed = false;
     private float latestGroundTime = 0;
@@ -70,8 +70,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         // Move Input
-        if (Input.GetKey(KeyCode.D))
-        {
+        if (Input.GetKey(KeyCode.D)){
             moveInput = 1;
         }
         else if (Input.GetKey(KeyCode.A)) {
