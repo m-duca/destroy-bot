@@ -33,6 +33,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     [Range(0f, 1f)] private float coyoteTime;
 
+    [SerializeField] private bool canJump = false;
+
+    private bool isJumping = false;
+    private bool jumpInputPressed = false;
+    private float latestGroundTime = 0;
+    private bool isCoyoteTime = false;
+
+    // Ground Check Variables
+    [Header("Ground Detection:")]
     [SerializeField]
     private Vector2 groundCheckSize;
 
@@ -42,28 +51,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Transform checkGroundPoint;
 
-    [SerializeField] private bool canJump = false;
-    private bool isJumping = false;
-    private bool jumpInputPressed = false;
-    private float latestGroundTime = 0;
-
     // Gravity Variables
     [Header("Gravity Settings:")]
-    [SerializeField] private float fallGravityMultiplier;
-
-    private float gravityScale = 2;
-
-    // Components
-    private Rigidbody2D rb;
-    private SpriteRenderer spr;
+    [SerializeField] 
+    [Range(0f, 2f)] private float fallGravityMultiplier;
 
     #region Engine Functions
 
     // Start is called before the first frame update
     private void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody2D>();
-        spr = gameObject.GetComponent<SpriteRenderer>();
+   
+
     }
 
     // Update is called once per frame
@@ -86,8 +85,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         FlipX();
+        Animate();
         Debugging();
-
     }
 
     private void FixedUpdate()
@@ -103,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         ApplyFriction();
-        //ExtraGravity();
+        FallGravity();
     }
 
 
@@ -116,18 +115,22 @@ public class PlayerMovement : MonoBehaviour
     {
         float targetSpeed = moveInput * moveSpeed;
 
-        float speedDif = targetSpeed - rb.velocity.x;
+        float speedDif = targetSpeed - Player.rb.velocity.x;
 
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
 
         float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
 
-        rb.AddForce(movement * Vector2.right);
+        Player.rb.AddForce(movement * Vector2.right);
     }
 
     private void ApplyJump()
     {
-        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        if (isCoyoteTime){
+            Player.rb.velocity = new Vector2(Player.rb.velocity.x, 0);
+        }
+
+        Player.rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         canJump = false;
         isJumping = true;
         jumpInputPressed = false;
@@ -136,11 +139,11 @@ public class PlayerMovement : MonoBehaviour
     private void ApplyFriction()
     {
         if (latestGroundTime > 0 && moveInput == 0){
-            float amount = Mathf.Min(Mathf.Abs(rb.velocity.y), Mathf.Abs(frictionAmount));
+            float amount = Mathf.Min(Mathf.Abs(Player.rb.velocity.y), Mathf.Abs(frictionAmount));
 
-            amount *= Mathf.Sign(rb.velocity.x);
+            amount *= Mathf.Sign(Player.rb.velocity.x);
 
-            rb.AddForce(Vector2.right * -amount, ForceMode2D.Impulse);
+            Player.rb.AddForce(Vector2.right * -amount, ForceMode2D.Impulse);
         }
     }
 
@@ -149,33 +152,47 @@ public class PlayerMovement : MonoBehaviour
     {
 
         if (moveInput < 0) {
-            spr.flipX = true;
+            Player.spr.flipX = true;
         }
         else if (moveInput > 0) {
-            spr.flipX = false;
+            Player.spr.flipX = false;
         }
 
+    }
+
+    private void Animate()
+    {
+        Player.animator.SetFloat("move", Mathf.Abs(moveInput));
+        Player.animator.SetBool("jump", isJumping);
     }
 
     private void CheckGround() 
     {
         if(Physics2D.OverlapBox(checkGroundPoint.position, groundCheckSize, 0, groundLayer)){
             canJump = true;
+            isJumping = false;
             latestGroundTime += Time.fixedDeltaTime;
         }
         else{
-            canJump = false;
-            latestGroundTime = 0;
+            if (!isCoyoteTime){
+                StartCoroutine(CoyoteTime(coyoteTime));
+            }
         }
     }
 
-    private void ExtraGravity()
+    private IEnumerator CoyoteTime(float time)
     {
-        if (rb.velocity.y < 0){
-            rb.gravityScale *= fallGravityMultiplier;
-        }
-        else{
-            rb.gravityScale = gravityScale;
+        isCoyoteTime = true;
+        yield return new WaitForSeconds(time);
+        canJump = false;
+        latestGroundTime = 0;
+        isCoyoteTime = false;
+    }
+
+    private void FallGravity()
+    {
+        if (Player.rb.velocity.y < 0 && isJumping){
+            Player.rb.velocity += Vector2.down * fallGravityMultiplier;
         }
     }
 
