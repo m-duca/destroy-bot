@@ -56,7 +56,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] 
     [Range(0f, 2f)] private float fallGravityMultiplier;
 
+    // Stretch & Squash Variables
+    private float defaultScaleX, defaultScaleY;
+
     #region Engine Functions
+
+    private void Awake()
+    {
+        defaultScaleX = gameObject.transform.localScale.x;
+        defaultScaleY = gameObject.transform.localScale.y;
+    }
 
     // Start is called before the first frame update
     private void Start()
@@ -105,6 +114,14 @@ public class PlayerMovement : MonoBehaviour
         FallGravity();
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 3)
+        {
+            StartCoroutine(StretchSquash(defaultScaleX, defaultScaleY, 2.10f, 0.75f, 0.6f, 0.2f));
+        }
+    }
+
 
     #endregion
 
@@ -134,6 +151,7 @@ public class PlayerMovement : MonoBehaviour
         canJump = false;
         isJumping = true;
         jumpInputPressed = false;
+        StartCoroutine(StretchSquash(defaultScaleX, defaultScaleY, 0.35f, 2f, 0.2f, 0.3f));
     }
 
     private void ApplyFriction()
@@ -158,6 +176,13 @@ public class PlayerMovement : MonoBehaviour
             Player.spr.flipX = false;
         }
 
+    }
+
+    private IEnumerator StretchSquash(float scaleX, float scaleY, float targetX, float targetY, float lerpSpeed, float time)
+    {
+        Player.transf.localScale = new Vector3(Mathf.Lerp(scaleX, targetX, lerpSpeed), Mathf.Lerp(scaleY, targetY, lerpSpeed), 1f);
+        yield return new WaitForSeconds(time);
+        Player.transf.localScale = new Vector3(scaleX, scaleY, 1f);
     }
 
     private void Animate()

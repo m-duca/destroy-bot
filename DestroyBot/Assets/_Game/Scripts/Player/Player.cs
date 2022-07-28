@@ -15,6 +15,9 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public static Animator animator;
 
+    [HideInInspector]
+    public static Transform transf;
+
     #region Engine Functions
 
     private void Awake()
@@ -22,6 +25,7 @@ public class Player : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
         spr = gameObject.GetComponent<SpriteRenderer>();
         animator = gameObject.GetComponent<Animator>();
+        transf = gameObject.GetComponent<Transform>();
     }
 
     #endregion
