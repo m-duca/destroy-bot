@@ -31,7 +31,12 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public static bool canPlay = false;
 
+    [HideInInspector]
+    public static bool isReseting = false;
+
     private static Transform respawnPoint;
+
+   
 
     #region Engine Functions
 
@@ -43,7 +48,6 @@ public class Player : MonoBehaviour
         transf = gameObject.GetComponent<Transform>();
 
         respawnPoint = GameObject.FindGameObjectWithTag("RespawnPoint").transform;
-
     }
 
     private void Start()
@@ -62,6 +66,7 @@ public class Player : MonoBehaviour
 
     public void Respawn(string colTag)
     {
+        Player.isReseting = true;
         GameObject lastBot = Instantiate(prefabLastBot, Player.transf.position, Quaternion.Euler(0, 0, 0));
         lastBot.GetComponent<SpriteRenderer>().flipX = Player.spr.flipX;
         lastBot.GetComponent<Rigidbody2D>().gravityScale = Player.rb.gravityScale;
@@ -69,6 +74,7 @@ public class Player : MonoBehaviour
         {
             lastBot.GetComponent<SpriteRenderer>().sprite = wrongLastBot;
             Player.transf.position = respawnPoint.position;
+            Player.isReseting = false;
         }
         else if (colTag == "Objective")
         {

@@ -67,16 +67,10 @@ public class PlayerMovement : MonoBehaviour
         defaultScaleY = gameObject.transform.localScale.y;
     }
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-   
-
-    }
-
     // Update is called once per frame
     private void Update()
     {
+       
         if (Player.canPlay)
         {
             // Move Input
@@ -133,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.layer == 3)
         {
             StartCoroutine(StretchSquash(defaultScaleX, defaultScaleY, 2.10f, 0.75f, 0.6f, 0.2f));
-            if (!Player.canPlay) Player.canPlay = true;
+            if (!Player.canPlay && !Player.isReseting) Player.canPlay = true;
         }
     }
 

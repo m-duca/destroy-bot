@@ -33,11 +33,6 @@ public class Transition : MonoBehaviour
         SetFade(Transition.FADE_OUT);
     }
 
-    private void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     private void Update()
     {
