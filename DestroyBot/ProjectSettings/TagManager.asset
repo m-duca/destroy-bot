@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - Objective
   - RespawnPoint
+  - LastBot
   layers:
   - Default
   - TransparentFX

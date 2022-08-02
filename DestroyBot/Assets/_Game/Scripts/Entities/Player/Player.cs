@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Components
+   
     [Header("Last Bot:")]
 
     [SerializeField]

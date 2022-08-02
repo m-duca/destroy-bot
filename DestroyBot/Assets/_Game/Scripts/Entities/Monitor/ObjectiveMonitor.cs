@@ -18,17 +18,20 @@ public class ObjectiveMonitor : MonoBehaviour
     private const string ROCKET = "ROCKET";
 
     private SpriteRenderer sprObjective;
+    private Transform transfObjective;
 
     #region Engine Functions
     private void Awake()
     {
         sprObjective = gameObject.transform.Find("Objective").GetComponent<SpriteRenderer>();
+        transfObjective = gameObject.transform.Find("Objective").GetComponent<Transform>();
     }
 
     // Start is called before the first frame update
     private void Start()
     {
         SetObjectiveSprite();
+        objective = objective.ToUpper();
     }
 
     #endregion
@@ -44,6 +47,9 @@ public class ObjectiveMonitor : MonoBehaviour
 
             case ROCKET:
                 sprObjective.sprite = objectiveSprites[1];
+                transfObjective.position = gameObject.transform.position;
+                transfObjective.position += new Vector3(0.012f, -0.5f, 0f);
+                transfObjective.localScale = new Vector3(1.25f, 1.25f, 1f);
                 break;
         }
     }

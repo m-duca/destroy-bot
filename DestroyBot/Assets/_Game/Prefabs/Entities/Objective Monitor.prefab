@@ -202,7 +202,7 @@ MonoBehaviour:
   objective: ROCKET
   objectiveSprites:
   - {fileID: 21300000, guid: de5046ba6874c1d4189cd60aafcb6bd9, type: 3}
-  - {fileID: 21300000, guid: 92e32cf16f7fb0147a96561e88b3a60f, type: 3}
+  - {fileID: 21300000, guid: bc94320c6aae119488a8390dcfa474ae, type: 3}
 --- !u!1 &6882869951026044149
 GameObject:
   m_ObjectHideFlags: 0
