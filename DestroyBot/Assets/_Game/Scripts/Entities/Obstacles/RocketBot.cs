@@ -20,6 +20,11 @@ public class RocketBot : MonoBehaviour
 
     // Movement Variables
     private float curMoveSpeed;
+    private Vector2 direction;
+
+    // Flip Control Variable
+    [HideInInspector]
+    public string type;
 
     // Components 
     private Rigidbody2D rb;
@@ -43,8 +48,27 @@ public class RocketBot : MonoBehaviour
         // Set current move speed to initial speed
         curMoveSpeed = initialSpeed;
 
-        // Set Scale X to be equals the move direction
-        gameObject.transform.localScale = new Vector3(moveDirection, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+
+        if (type == "HORIZONTAL")
+        {
+            // Set Scale X to be equals the move direction
+            gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x * Mathf.Sign(moveDirection), gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+
+            // Set Movement Direction to Horizontal
+            direction = Vector2.right * moveDirection;
+        }
+        else
+        {
+            // Set Scale Y to be equals the move direction
+            gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x, gameObject.transform.localScale.y * Mathf.Sign(moveDirection), gameObject.transform.localScale.z);
+
+            // Rotate Vertically
+            gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 90f * Mathf.Sign(moveDirection));
+
+            // Set Movement Direction to Vertical
+            direction = Vector2.up * moveDirection;
+        }
+
     }
 
     // Update is called once per frame
@@ -66,7 +90,7 @@ public class RocketBot : MonoBehaviour
     private void FixedUpdate()
     {
         // Move Rocket
-        rb.velocity = Vector2.right * moveDirection * curMoveSpeed;
+        rb.velocity = direction * curMoveSpeed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

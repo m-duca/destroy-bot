@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -897364257551439726}
   - component: {fileID: 943088322198978822}
   m_Layer: 0
-  m_Name: Rocket Bot
+  m_Name: Rocket Bot (Obstacle)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,6 +122,10 @@ MonoBehaviour:
   maxSpeed: 10
   acceleration: 2
   moveDirection: 0
+  type: 
+  rocketLauncherHitBox:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!58 &943088322198978822
 CircleCollider2D:
   m_ObjectHideFlags: 0

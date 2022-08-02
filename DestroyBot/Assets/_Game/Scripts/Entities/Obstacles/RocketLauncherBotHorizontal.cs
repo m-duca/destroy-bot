@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RocketLauncherBot : MonoBehaviour
+public class RocketLauncherBotHorizontal : MonoBehaviour
 {
     [Header("Rocket Launcher Bot Settings:")]
 
@@ -47,8 +47,11 @@ public class RocketLauncherBot : MonoBehaviour
         // Get Rocket Bot´s Script
         RocketBot rocketBotScript = rocketBot.GetComponent<RocketBot>();
 
+        // Set Rocket Launcher Type
+        rocketBotScript.type = "HORIZONTAL";
+
         // Set Rocket Bot´s move direction
-        rocketBotScript.moveDirection = gameObject.transform.localScale.x;
+        rocketBotScript.moveDirection = Mathf.Sign(gameObject.transform.localScale.x);
 
         // Reference Rocket Launcher´s hit box
         rocketBotScript.rocketLauncherHitBox = gameObject.GetComponents<BoxCollider2D>();

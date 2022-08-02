@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 2300602656205803250}
   - component: {fileID: 2300602656205803251}
   m_Layer: 3
-  m_Name: Rocket Launcher Bot
+  m_Name: Rocket Launcher Bot Horizontal (Obstacle)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
