@@ -36,8 +36,6 @@ public class Player : MonoBehaviour
 
     private static Transform respawnPoint;
 
-   
-
     #region Engine Functions
 
     private void Awake()
@@ -72,12 +70,18 @@ public class Player : MonoBehaviour
         lastBot.GetComponent<Rigidbody2D>().gravityScale = Player.rb.gravityScale;
         if (colTag == "Obstacle")
         {
+            // Spawn Explosion
+            ExplosionParticleSystem.SpawnExplosion(2f, Player.transf.position, ExplosionParticleSystem.obstacleColor);
+           
             lastBot.GetComponent<SpriteRenderer>().sprite = wrongLastBot;
             Player.transf.position = respawnPoint.position;
             Player.isReseting = false;
         }
         else if (colTag == "Objective")
         {
+            // Spawn Explosion
+            ExplosionParticleSystem.SpawnExplosion(2f, Player.transf.position, ExplosionParticleSystem.objectiveColor);
+            
             lastBot.GetComponent<SpriteRenderer>().sprite = rightLastBot;
             Transition.SetFade(Transition.FADE_IN);
             gameObject.SetActive(false);

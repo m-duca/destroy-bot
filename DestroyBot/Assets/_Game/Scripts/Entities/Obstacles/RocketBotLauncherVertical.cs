@@ -11,7 +11,8 @@ public class RocketBotLauncherVertical : MonoBehaviour
     [SerializeField] private GameObject rocketPrefab;
 
     // Stretch & Squash Variables
-    private float defaultScaleX, defaultScaleY;
+    private float defaultScaleX;
+    //private float defaultScaleY defaultScaleY;
 
     // References
     private Transform rocketSpawnPoint;
@@ -28,7 +29,7 @@ public class RocketBotLauncherVertical : MonoBehaviour
     {
         // Get default scale
         defaultScaleX = gameObject.transform.localScale.x;
-        defaultScaleY = gameObject.transform.localScale.y;
+        //defaultScaleY = gameObject.transform.localScale.y;
 
         // Start Coroutine Spawn Rocket Bot
         StartCoroutine(SpawnRocketBot(spawnRocketTime));
@@ -39,7 +40,7 @@ public class RocketBotLauncherVertical : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         // Apply Stretch & Squash Effect before spawn Rocket
-        StartCoroutine(StretchSquash(defaultScaleX, defaultScaleY, 2.25f * Mathf.Sign(defaultScaleX),  0.85f * Mathf.Sign(defaultScaleY), 0.8f, 0.15f));
+        StartCoroutine(StretchSquash(defaultScaleX, 2.25f * Mathf.Sign(defaultScaleX), 0.8f, 0.15f));
 
         // Instantiate Rocket Bot
         GameObject rocketBot = Instantiate(rocketPrefab, rocketSpawnPoint.position, Quaternion.Euler(0, 0, 0));
@@ -63,11 +64,11 @@ public class RocketBotLauncherVertical : MonoBehaviour
     #endregion
 
     #region Custom Functions
-    private IEnumerator StretchSquash(float scaleX, float scaleY, float targetX, float targetY, float lerpSpeed, float time)
+    private IEnumerator StretchSquash(float scaleX, float targetX, float lerpSpeed, float time)
     {
-        gameObject.transform.localScale = new Vector3(Mathf.Lerp(scaleX, targetX, lerpSpeed), Mathf.Lerp(scaleY, targetY, lerpSpeed), 1f);
+        gameObject.transform.localScale = new Vector3(Mathf.Lerp(scaleX, targetX, lerpSpeed), gameObject.transform.localScale.y);
         yield return new WaitForSeconds(time);
-        gameObject.transform.localScale = new Vector3(scaleX, scaleY, 1f);
+        gameObject.transform.localScale = new Vector3(scaleX, gameObject.transform.localScale.y, 1f);
     }
 
     #endregion

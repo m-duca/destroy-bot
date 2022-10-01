@@ -28,7 +28,7 @@ public class Transition : MonoBehaviour
     #region Engine Functions
     private void Awake()
     {
-        imgTransitionBg = GameObject.Find("Canvas").transform.Find("Img Transition Background").GetComponent<Image>();
+        imgTransitionBg = GameObject.Find("Fade Canvas").transform.Find("Img Transition Background").GetComponent<Image>();
 
         SetFade(Transition.FADE_OUT);
     }

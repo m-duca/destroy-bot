@@ -102,6 +102,16 @@ public class RocketBot : MonoBehaviour
         }
 
         // When collision with anything
+        // Spawn Explosion
+        if (gameObject.CompareTag("Obstacle")) // Change to Particles to Red Color
+        {
+            ExplosionParticleSystem.SpawnExplosion(2f, gameObject.transform.position, ExplosionParticleSystem.obstacleColor);
+        }
+        else // Change to Particles to Green Color
+        {
+            ExplosionParticleSystem.SpawnExplosion(2f, gameObject.transform.position, ExplosionParticleSystem.objectiveColor);
+        }
+        
         // Destroy this instance
         Destroy(gameObject);
     }
