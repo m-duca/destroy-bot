@@ -702,7 +702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6953280676152271998, guid: f58a6002c1963734a9631c56015218d7, type: 3}
       propertyPath: nextLevelName
-      value: Level2
+      value: End
       objectReference: {fileID: 0}
     - target: {fileID: 6953280676152271999, guid: f58a6002c1963734a9631c56015218d7, type: 3}
       propertyPath: m_RootOrder
@@ -799,9 +799,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 100
+  m_ReferencePixelsPerUnit: 32
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 800, y: 450}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
