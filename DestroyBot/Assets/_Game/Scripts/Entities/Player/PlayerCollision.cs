@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerCollision : MonoBehaviour
 {
+    [SerializeField]
+    private AudioSource audioSourceHit;
+  
     private Player playerScript;
 
     // Others References
@@ -25,6 +28,7 @@ public class PlayerCollision : MonoBehaviour
             playerScript.Respawn(collision.gameObject.tag);
             Player.canPlay = false;
             Player.rb.velocity = Vector2.zero;
+            audioSourceHit.Play();
         }
     }
 

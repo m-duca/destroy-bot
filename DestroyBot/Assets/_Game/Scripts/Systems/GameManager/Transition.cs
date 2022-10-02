@@ -54,7 +54,6 @@ public class Transition : MonoBehaviour
             else
             {
                 fade = "";
-                
             }
         }
         else if (fade == Transition.FADE_IN)
@@ -65,6 +64,8 @@ public class Transition : MonoBehaviour
                 a += fadeInSpeed * Time.deltaTime;
                 imgTransitionBg.color = new Color(imgTransitionBg.color.r, imgTransitionBg.color.g, imgTransitionBg.color.b, a);
                 Player.canPlay = false;
+                MusicScript.musicCurTime = MusicScript.audioSourceMusic.time;
+                MusicScript.audioSourceMusic.volume = 0.45f;
             }
             else
             {

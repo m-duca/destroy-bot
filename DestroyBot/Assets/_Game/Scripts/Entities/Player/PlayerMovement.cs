@@ -8,6 +8,10 @@ public class PlayerMovement : MonoBehaviour
 
     // Move Variables
     [Header("Movement Settings:")]
+
+    [SerializeField]
+    private AudioSource audioSourceJump;
+
     [SerializeField]
     private float moveSpeed;
 
@@ -156,6 +160,7 @@ public class PlayerMovement : MonoBehaviour
             Player.rb.velocity = new Vector2(Player.rb.velocity.x, 0);
         }
 
+        audioSourceJump.Play();
         Player.rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         canJump = false;
         isJumping = true;

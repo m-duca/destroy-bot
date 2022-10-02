@@ -50,6 +50,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        MusicScript.audioSourceMusic.time = MusicScript.musicCurTime;
+        MusicScript.audioSourceMusic.volume = MusicScript.defaultVolume;
         Spawn();
     }
 

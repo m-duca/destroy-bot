@@ -5,6 +5,7 @@ using UnityEngine;
 public class MenuManager : MonoBehaviour
 {
     #region Engine Functions
+
     // Update is called once per frame
     private void Update()
     {
