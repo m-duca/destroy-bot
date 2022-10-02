@@ -28,5 +28,20 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("TriggerNextLevel"))
+        {
+            Transition.SetFade(Transition.FADE_IN);
+        }
+        else if (collision.gameObject.CompareTag("TriggerPipe"))
+        {
+            Player.transf.position = collision.gameObject.transform.position - Vector3.right * 0.05f;
+            Player.canPlay = false;
+            Player.rb.gravityScale = 0;
+            Player.rb.velocity = Vector2.up * 20f;
+        }
+    }
+
     #endregion
 }

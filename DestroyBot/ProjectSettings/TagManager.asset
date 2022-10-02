@@ -9,6 +9,8 @@ TagManager:
   - Objective
   - RespawnPoint
   - LastBot
+  - TriggerNextLevel
+  - TriggerPipe
   layers:
   - Default
   - TransparentFX
