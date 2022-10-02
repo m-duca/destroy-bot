@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -70,6 +71,11 @@ public class Player : MonoBehaviour
     private void Spawn()
     {
         Player.transf.position = respawnPoint.position;
+
+        if (SceneManager.GetActiveScene().name == "Level2")
+        {
+            Player.spr.flipX = true;
+        }
     }
 
     public void Respawn(string colTag)

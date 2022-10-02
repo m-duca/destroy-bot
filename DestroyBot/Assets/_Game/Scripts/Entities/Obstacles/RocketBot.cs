@@ -95,11 +95,13 @@ public class RocketBot : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        /*
         // Destroy Player Last Bot
         if (collision.gameObject.CompareTag("LastBot"))
         {
             Destroy(collision.gameObject);
         }
+        */
 
         // When collision with anything
         // Spawn Explosion
