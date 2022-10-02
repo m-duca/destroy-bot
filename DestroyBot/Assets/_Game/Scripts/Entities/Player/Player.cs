@@ -74,6 +74,7 @@ public class Player : MonoBehaviour
 
     public void Respawn(string colTag)
     {
+        gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
         Player.isReseting = true;
         GameObject lastBot = Instantiate(prefabLastBot, Player.transf.position, Quaternion.Euler(0, 0, 0));
         lastBot.GetComponent<SpriteRenderer>().flipX = Player.spr.flipX;
