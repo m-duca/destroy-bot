@@ -19,6 +19,7 @@ public class Transition : MonoBehaviour
 
     public static string FADE_OUT = "Fade Out";
     public static string FADE_IN = "Fade In";
+    public static string FADE_RESTART = "Fade Restart";
 
     private static string fade;
 
@@ -78,6 +79,23 @@ public class Transition : MonoBehaviour
                 {
                     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 }
+            }
+        }
+        else if (fade == Transition.FADE_RESTART)
+        {
+            if (imgTransitionBg.color.a < 1)
+            {
+                float a = imgTransitionBg.color.a;
+                a += fadeInSpeed * Time.deltaTime;
+                imgTransitionBg.color = new Color(imgTransitionBg.color.r, imgTransitionBg.color.g, imgTransitionBg.color.b, a);
+                Player.canPlay = false;
+                MusicScript.musicCurTime = MusicScript.audioSourceMusic.time;
+                MusicScript.audioSourceMusic.volume = 0.45f;
+            }
+            else
+            {
+                // Restart Level
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
         

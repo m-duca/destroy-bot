@@ -55,6 +55,14 @@ public class Player : MonoBehaviour
         Spawn();
     }
 
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.R))
+        {
+            Transition.SetFade(Transition.FADE_RESTART);
+        }
+    }
+
     #endregion
 
     #region Custom Functions
